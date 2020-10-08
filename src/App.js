@@ -10,7 +10,7 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.handleSubmit('apex legends');
+    this.handleSubmit('Youtube API');
   }
   handleSubmit = async (searchTerm) => {
     const response = await Youtube.get('search', {
@@ -33,21 +33,26 @@ class App extends React.Component {
   render() {
     const { videos, selectedVideos } = this.state;
     return (
-      <Grid justify="center" container spacing={10}>
-        <Grid item xs={12}>
-          <Grid container spacing={10}>
-            <Grid item xs={12}>
-              <SearchBar onFormSubmit={this.handleSubmit} />
-            </Grid>
-            <Grid item xs={8}>
-              <VideoDetails video={selectedVideos} />
-            </Grid>
-            <Grid item xs={4}>
-              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
+      <React.Fragment>
+        <h1 style={{ display: 'flex', justifyContent: 'center' }}>
+          Youtube Clone
+        </h1>
+        <Grid justify="center" container spacing={10}>
+          <Grid item xs={12}>
+            <Grid container spacing={10}>
+              <Grid item xs={12}>
+                <SearchBar onFormSubmit={this.handleSubmit} />
+              </Grid>
+              <Grid item xs={8}>
+                <VideoDetails video={selectedVideos} />
+              </Grid>
+              <Grid item xs={4}>
+                <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 }
